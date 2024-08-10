@@ -5,10 +5,6 @@ const {
 const { expect } = require('chai');
 const { ethers } = require('hardhat');
 
-const tokens = (n) => {
-    return ethers.utils.parseUnits(n.toString(), 'ether')
-}
-
 describe('CrowdCaster', () => {
 
     async function createCampaignFixture(){
@@ -24,9 +20,8 @@ describe('CrowdCaster', () => {
 
     describe("Deployment", function () {
         it('Should set the right owner', async () => {
-            const { crowdCaster, owner } = await loadFixture(createCampaignFixture());
+            const { crowdCaster, owner } = await loadFixture(createCampaignFixture);
             
-            console.log(owner)
             expect(await crowdCaster.owner()).to.equal(owner.address)
         })
     })
