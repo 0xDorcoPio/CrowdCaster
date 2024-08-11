@@ -12,8 +12,10 @@ describe('CrowdCaster', () => {
         const amount = 1e9; // 1 GWEI
         const deadline = (await time.latest()) + 60; // now + 1 minute
 
+        console.log(deadline)
+
         const CrowdCaster = await ethers.getContractFactory('CrowdCaster');
-        crowdCaster = await CrowdCaster.deploy(amount, deadline) // 1 ether
+        crowdCaster = await CrowdCaster.deploy(amount, deadline)
         
         return { crowdCaster, owner, amount, deadline };
     }
